@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\PanierController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CommandeController;
+use App\Http\Controllers\PanierController;
 use App\Http\Controllers\ProduitController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,12 +18,23 @@ Route::post('/panier/quantite/{cle}', [PanierController::class, 'modifierQuantit
 Route::post('/panier/supprimer/{cle}', [PanierController::class, 'supprimer'])->name('panier.supprimer');
 Route::post('/panier/code-promo', [PanierController::class, 'appliquerCodePromo'])->name('panier.codepromo');
 
-// Pages encore statiques (prochaines étapes)
-Route::get('/commande', [CommandeController::class, 'formulaire'])->name('commande');
-Route::post('/commande', [CommandeController::class, 'enregistrer'])->name('commande.enregistrer');
-Route::view('/connexion', 'auth.connexion')->name('login');
-Route::view('/inscription', 'auth.inscription')->name('register');
-Route::view('/compte', 'compte.index')->name('compte');
+// Authentification (visiteurs non connectés uniquement)
+Route::middleware('guest')->group(function () {
+    Route::get('/connexion', [AuthController::class, 'formulaireConnexion'])->name('login');
+    Route::post('/connexion', [AuthController::class, 'connecter'])->name('login.post');
+    Route::get('/inscription', [AuthController::class, 'formulaireInscription'])->name('register');
+    Route::post('/inscription', [AuthController::class, 'inscrire'])->name('register.post');
+});
+
+// Pages réservées aux utilisateurs connectés
+Route::middleware('auth')->group(function () {
+    Route::post('/deconnexion', [AuthController::class, 'deconnecter'])->name('logout');
+    Route::get('/commande', [CommandeController::class, 'formulaire'])->name('commande');
+    Route::post('/commande', [CommandeController::class, 'enregistrer'])->name('commande.enregistrer');
+    Route::view('/compte', 'compte.index')->name('compte');
+    Route::view('/admin', 'admin.dashboard')->name('admin.dashboard');
+});
+
+// Pages encore statiques (derniere etape)
 Route::view('/favoris', 'favoris')->name('favoris');
 Route::view('/essayage', 'essayage')->name('essayage');
-Route::view('/admin', 'admin.dashboard')->name('admin.dashboard');

@@ -6,6 +6,7 @@ use App\Models\Commande;
 use App\Models\Couleur;
 use App\Models\LigneCommande;
 use App\Models\Produit;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class CommandeController extends Controller
@@ -52,11 +53,9 @@ class CommandeController extends Controller
 
         $totaux = PanierController::calculerTotaux($panier);
 
-        // Création de la commande
-        // NB : user_id = 2 (client de test) tant que l'authentification
-        // n'est pas branchée — ce sera auth()->id() à l'étape B7.
+        // La commande est liée à l'utilisateur connecté (middleware auth).
         $commande = Commande::create([
-            'user_id'             => 2,
+            'user_id'             => Auth::id(),
             'reference'           => Commande::genererReference(),
             'statut'              => 'en_attente',
             'total'               => $totaux['total'],

@@ -52,9 +52,12 @@
         @endforeach
     </div>
 
-    <button class="w-full bg-bj-cuir text-bj-creme uppercase tracking-wide text-sm py-3.5 rounded-sm hover:bg-bj-noir transition-colors">
+   <form method="POST" action="{{ route('logout') }}">
+    @csrf
+    <button type="submit" class="w-full bg-bj-cuir text-bj-creme uppercase tracking-wide text-sm py-3.5 rounded-sm hover:bg-bj-noir transition-colors">
         Se déconnecter
     </button>
+</form>
 </section>
 
 @endsection
