@@ -70,11 +70,14 @@
         </div>
 
         <div class="flex flex-col gap-3">
-            <button data-modal-target="modal-ajout-panier" data-modal-toggle="modal-ajout-panier"
-                    {{ $produit->disponible ? '' : 'disabled' }}
-                    class="w-full bg-bj-noir text-bj-creme uppercase tracking-wide text-sm py-4 rounded-sm hover:bg-bj-cuir transition-colors disabled:opacity-40 disabled:cursor-not-allowed">
-                {{ $produit->disponible ? 'Ajouter au panier' : 'Indisponible' }}
-            </button>
+            <form method="POST" action="{{ route('panier.ajouter', $produit->slug) }}">
+                @csrf
+                <input type="hidden" name="couleur" id="input-couleur" value="{{ $produit->couleurs->first()?->nom ?? '' }}">
+                <button type="submit" {{ $produit->disponible ? '' : 'disabled' }}
+                        class="w-full bg-bj-noir text-bj-creme uppercase tracking-wide text-sm py-4 rounded-sm hover:bg-bj-cuir transition-colors disabled:opacity-40 disabled:cursor-not-allowed">
+                    {{ $produit->disponible ? 'Ajouter au panier' : 'Indisponible' }}
+                </button>
+            </form>
             <a href="https://wa.me/2250000000000?text={{ urlencode('Bonjour, je souhaite commander le sac ' . $produit->nom) }}"
                target="_blank" rel="noopener"
                class="w-full text-center border-2 border-green-500 text-green-600 uppercase tracking-wide text-sm py-3.5 rounded-sm hover:bg-green-500 hover:text-white transition-colors">
@@ -136,7 +139,7 @@
     function choisirCouleur(btn) {
         document.querySelectorAll('#choix-couleur button').forEach(b => b.classList.remove('border-bj-or', 'scale-110'));
         btn.classList.add('border-bj-or', 'scale-110');
-        document.getElementById('couleur-choisie').textContent = btn.dataset.couleur;
+        document.getElementById('input-couleur').value = btn.dataset.couleur;
     }
 </script>
 @endpush
