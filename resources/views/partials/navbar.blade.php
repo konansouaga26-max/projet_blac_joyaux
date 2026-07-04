@@ -24,7 +24,7 @@
             </a>
             <a href="{{ url('/panier') }}" class="relative hover:text-bj-or transition-colors" aria-label="Mon panier">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.5l2.1 12.3a1.5 1.5 0 001.48 1.2h9.94a1.5 1.5 0 001.47-1.17L20.7 7.5H5.1M9 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm8.25 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"/></svg>
-                <span id="badge-panier" class="absolute -top-2 -right-2 bg-bj-or text-bj-noir text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center">0</span>
+                <span id="badge-panier" class="absolute -top-2 -right-2 bg-bj-or text-bj-noir text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center">{{ array_sum(array_column(session('panier', []), 'quantite')) }}</span>
             </a>
         </div>
     </nav>

@@ -30,10 +30,10 @@
         <p class="text-center text-bj-noir/50 py-10">Aucun produit dans cette catégorie pour le moment.</p>
     @endif
 
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+    <div class="flex flex-wrap justify-center gap-4 md:gap-6">
         @foreach ($produits as $produit)
-        <div class="group bg-white rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-shadow">
-            <a href="{{ route('produit.show', $produit->slug) }}" class="block aspect-[4/5] overflow-hidden relative">
+        <div class="w-[45%] md:w-[30%] lg:w-[22%] group bg-white rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-shadow">
+            <a href="{{ route('produit.show', $produit->slug) }}" class="block aspect-4/5 overflow-hidden relative">
                 <img src="{{ asset($produit->imagePrincipale?->url ?? 'images/sac-hero.jpeg') }}" alt="{{ $produit->nom }}"
                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                 @unless ($produit->disponible)

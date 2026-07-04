@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PanierController;
+use App\Http\Controllers\CommandeController;
 use App\Http\Controllers\ProduitController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,7 +18,8 @@ Route::post('/panier/supprimer/{cle}', [PanierController::class, 'supprimer'])->
 Route::post('/panier/code-promo', [PanierController::class, 'appliquerCodePromo'])->name('panier.codepromo');
 
 // Pages encore statiques (prochaines étapes)
-Route::view('/commande', 'commande')->name('commande');
+Route::get('/commande', [CommandeController::class, 'formulaire'])->name('commande');
+Route::post('/commande', [CommandeController::class, 'enregistrer'])->name('commande.enregistrer');
 Route::view('/connexion', 'auth.connexion')->name('login');
 Route::view('/inscription', 'auth.inscription')->name('register');
 Route::view('/compte', 'compte.index')->name('compte');
