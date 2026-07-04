@@ -1,15 +1,20 @@
 <?php
 
+use App\Http\Controllers\ProduitController;
 use Illuminate\Support\Facades\Route;
 
 /*
-| Routes Web — PHASE FRONT-END (vues statiques)
-| Ces Route::view seront remplacées par des controllers en phase back-end.
+| Routes Web — Blac Joyaux
+| Le catalogue est désormais dynamique (ProduitController).
+| Les autres pages passeront en controllers aux prochaines étapes.
 */
 
-Route::view('/', 'home')->name('home');
-Route::view('/boutique', 'boutique')->name('boutique');
-Route::view('/produit/{slug}', 'produit')->name('produit.show');
+// Catalogue (dynamique)
+Route::get('/', [ProduitController::class, 'accueil'])->name('home');
+Route::get('/boutique/{categorieSlug?}', [ProduitController::class, 'boutique'])->name('boutique');
+Route::get('/produit/{slug}', [ProduitController::class, 'show'])->name('produit.show');
+
+// Pages encore statiques (prochaines étapes)
 Route::view('/panier', 'panier')->name('panier');
 Route::view('/commande', 'commande')->name('commande');
 Route::view('/connexion', 'auth.connexion')->name('login');

@@ -18,7 +18,7 @@
             et fabriqués avec passion en Côte d'Ivoire.
         </p>
         <div class="flex flex-col sm:flex-row gap-3">
-            <a href="{{ url('/boutique') }}"
+            <a href="{{ route('boutique') }}"
                class="inline-block text-center bg-bj-or text-bj-noir font-semibold uppercase tracking-wide text-sm px-8 py-3.5 rounded-sm hover:bg-bj-creme transition-colors">
                 Découvrir
             </a>
@@ -36,23 +36,16 @@
         <h2 class="font-titre text-3xl md:text-4xl">Un seul héritage</h2>
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        @php
-            $produits = [
-                ['nom' => "L'Héritière", 'prix' => 95000, 'image' => 'sac-heritiere.jpeg', 'slug' => 'l-heritiere'],
-                ['nom' => "L'Élan",      'prix' => 75000, 'image' => 'sac-elan.jpeg',      'slug' => 'l-elan'],
-                ['nom' => "La Promesse", 'prix' => 55000, 'image' => 'sac-promesse.jpeg',  'slug' => 'la-promesse'],
-            ];
-        @endphp
         @foreach ($produits as $produit)
-        <a href="{{ url('/produit/'.$produit['slug']) }}"
+        <a href="{{ route('produit.show', $produit->slug) }}"
            class="group bg-white rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-shadow">
             <div class="aspect-[4/5] overflow-hidden">
-                <img src="{{ asset('images/'.$produit['image']) }}" alt="{{ $produit['nom'] }}"
+                <img src="{{ asset($produit->imagePrincipale?->url ?? 'images/sac-hero.jpeg') }}" alt="{{ $produit->nom }}"
                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
             </div>
             <div class="p-5 text-center">
-                <h3 class="font-titre text-xl mb-1">{{ $produit['nom'] }}</h3>
-                <p class="text-bj-cuir font-semibold">{{ number_format($produit['prix'], 0, ',', ' ') }} FCFA</p>
+                <h3 class="font-titre text-xl mb-1">{{ $produit->nom }}</h3>
+                <p class="text-bj-cuir font-semibold">{{ number_format($produit->prix, 0, ',', ' ') }} FCFA</p>
                 <span class="inline-block mt-3 text-xs uppercase tracking-widest text-bj-or border-b border-bj-or pb-0.5">Voir le produit</span>
             </div>
         </a>
@@ -95,7 +88,7 @@
                 <p>Fabriqués artisanalement à Abidjan, nos sacs sont pensés pour la femme africaine d'aujourd'hui.</p>
             </div>
             <div class="p-5 border-t border-bj-sable">
-                <a href="{{ url('/boutique') }}"
+                <a href="{{ route('boutique') }}"
                    class="block w-full text-center bg-bj-noir text-bj-creme uppercase tracking-wide text-sm py-3 rounded-sm hover:bg-bj-cuir transition-colors">
                     Découvrir la collection
                 </a>
