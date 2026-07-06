@@ -35,6 +35,11 @@ Route::middleware('auth')->group(function () {
     Route::post('/commande', [CommandeController::class, 'enregistrer'])->name('commande.enregistrer');
     Route::get('/compte', [CompteController::class, 'index'])->name('compte');
     Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/admin/produit/nouveau', [AdminController::class, 'creerProduit'])->name('admin.produit.creer');
+    Route::post('/admin/produit', [AdminController::class, 'enregistrerProduit'])->name('admin.produit.enregistrer');
+    Route::get('/admin/produit/{produit}/modifier', [AdminController::class, 'modifierProduit'])->name('admin.produit.modifier');
+    Route::post('/admin/produit/{produit}', [AdminController::class, 'mettreAJourProduit'])->name('admin.produit.majour');
+    Route::post('/admin/produit/{produit}/supprimer', [AdminController::class, 'supprimerProduit'])->name('admin.produit.supprimer');
 });
 
 // Pages encore statiques (derniere etape)
