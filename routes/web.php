@@ -4,6 +4,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CommandeController;
 use App\Http\Controllers\PanierController;
 use App\Http\Controllers\ProduitController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CompteController;
 use Illuminate\Support\Facades\Route;
 
 // Catalogue (dynamique)
@@ -31,8 +33,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/deconnexion', [AuthController::class, 'deconnecter'])->name('logout');
     Route::get('/commande', [CommandeController::class, 'formulaire'])->name('commande');
     Route::post('/commande', [CommandeController::class, 'enregistrer'])->name('commande.enregistrer');
-    Route::view('/compte', 'compte.index')->name('compte');
-    Route::view('/admin', 'admin.dashboard')->name('admin.dashboard');
+    Route::get('/compte', [CompteController::class, 'index'])->name('compte');
+    Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 });
 
 // Pages encore statiques (derniere etape)
