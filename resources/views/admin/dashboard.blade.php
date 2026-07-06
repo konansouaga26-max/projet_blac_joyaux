@@ -61,12 +61,14 @@
             <tbody class="divide-y divide-bj-sable">
                 @foreach ($produits as $produit)
                 <tr>
-                    <td class="px-4 py-3 flex items-center gap-3">
-                        <img src="{{ asset($produit->imagePrincipale?->url ?? 'images/sac-hero.jpeg') }}"
-                            class="w-10 h-10 object-cover rounded-sm" alt="{{ $produit->nom }}">
-                        <span class="font-medium">{{ $produit->nom }}</span>
+                    <td class="py-3 pl-4 pr-10">
+                        <div class="flex items-center gap-3">
+                            <img src="{{ asset($produit->imagePrincipale?->url ?? 'images/sac-hero.jpeg') }}"
+                                class="w-10 h-10 object-cover rounded-sm shrink-0" alt="{{ $produit->nom }}">
+                            <span class="font-medium whitespace-nowrap">{{ $produit->nom }}</span>
+                        </div>
                     </td>
-                    <td class="px-4 py-3">{{ number_format($produit->prix, 0, ',', ' ') }} FCFA</td>
+                    <td class="px-4 py-3 whitespace-nowrap">{{ number_format($produit->prix, 0, ',', ' ') }} FCFA</td>
                     <td class="px-4 py-3">{{ $produit->stock }}</td>
                     <td class="px-4 py-3">
                         <span

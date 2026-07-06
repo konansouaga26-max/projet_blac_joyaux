@@ -6,6 +6,7 @@ use App\Http\Controllers\PanierController;
 use App\Http\Controllers\ProduitController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CompteController;
+use App\Http\Controllers\EssayageController;
 use Illuminate\Support\Facades\Route;
 
 // Catalogue (dynamique)
@@ -44,4 +45,4 @@ Route::middleware('auth')->group(function () {
 
 // Pages encore statiques (derniere etape)
 Route::view('/favoris', 'favoris')->name('favoris');
-Route::view('/essayage', 'essayage')->name('essayage');
+Route::get('/essayage', [EssayageController::class, 'index'])->name('essayage');

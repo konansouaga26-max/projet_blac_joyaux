@@ -113,6 +113,12 @@ class DatabaseSeeder extends Seeder
         ImageProduit::create(['produit_id' => $promesse->id,  'url' => 'images/sac-promesse.jpeg',  'principale' => true,  'ordre' => 1]);
 
         // ------- Avis de test -------
+        // ------- Styles d'essayage -------
+        // ------- Styles d'essayage -------
+        // ------- Styles d'essayage -------
+        \App\Models\StyleEssayage::create(['produit_id' => $heritiere->id, 'nom' => 'Style chic',         'image_url' => 'images/sac-promesse.jpeg']);
+        \App\Models\StyleEssayage::create(['produit_id' => $elan->id,      'nom' => 'Style minimaliste', 'image_url' => 'images/sac-elan.jpeg']);
+        \App\Models\StyleEssayage::create(['produit_id' => $promesse->id,  'nom' => 'Style décontracté', 'image_url' => 'images/sac-heritiere.jpeg']);
         Avis::create(['user_id' => $client->id, 'produit_id' => $heritiere->id, 'note' => 5, 'commentaire' => 'Sublime, la qualité du cuir est incroyable !', 'created_at' => now()]);
         Avis::create(['user_id' => $client->id, 'produit_id' => $elan->id,      'note' => 4, 'commentaire' => 'Très beau sac, livraison rapide à Cocody.',    'created_at' => now()]);
 
