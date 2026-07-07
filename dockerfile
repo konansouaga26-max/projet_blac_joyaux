@@ -35,8 +35,7 @@ RUN touch database/database.sqlite \
     && chown -R www-data:www-data /var/www \
     && chmod -R 777 /var/www/storage /var/www/bootstrap/cache /var/www/database
 
-# Forcer le nettoyage de tous les fichiers de cache au démarrage
-RUN php artisan config:clear && php artisan cache:clear && php artisan view:clear
+RUN php artisan config:clear && php artisan view:clear
 
 # Configurer Nginx et Supervisor
 COPY .docker/nginx.conf /etc/nginx/nginx.conf
