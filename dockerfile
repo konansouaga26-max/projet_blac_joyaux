@@ -14,7 +14,7 @@ RUN apk add --no-cache \
     git \
     sqlite-dev
 
-# Configurer et installer les extensions PHP
+# Configurer et installer les extensions PHP nécessaires
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install pdo pdo_mysql pdo_sqlite bcmath gd
 
@@ -24,14 +24,19 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Configurer le répertoire de travail
 WORKDIR /var/www
 
-# Copier les fichiers du projet
+# Copier tous les fichiers du projet dans le conteneur
 COPY . .
 
-# Installer les dépendances Laravel
+# Installer les dépendances Laravel de production
 RUN composer install --no-dev --optimize-autoloader --no-interaction
 
-# Ajuster les permissions pour Laravel
-RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
+# Créer le fichier SQLite s'il n'existe pas et appliquer les permissions d'écriture
+RUN touch database/database.sqlite \
+    && chown -R www-data:www-data /var/www \
+    && chmod -R 775 /var/www/storage /var/www/bootstrap/cache /var/www/database
+
+# Vider et optimiser les caches de Laravel
+RUN php artisan config:cache && php artisan route:cache && php artisan view:cache
 
 # Configurer Nginx et Supervisor
 COPY .docker/nginx.conf /etc/nginx/nginx.conf
