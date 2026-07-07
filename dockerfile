@@ -30,13 +30,13 @@ COPY . .
 # Installer les dépendances Laravel de production
 RUN composer install --no-dev --optimize-autoloader --no-interaction
 
-# Créer le fichier SQLite s'il n'existe pas et appliquer les permissions d'écriture
+# Créer le fichier SQLite s'il n'existe pas et appliquer les permissions d'écriture maximales
 RUN touch database/database.sqlite \
     && chown -R www-data:www-data /var/www \
-    && chmod -R 775 /var/www/storage /var/www/bootstrap/cache /var/www/database
+    && chmod -R 777 /var/www/storage /var/www/bootstrap/cache /var/www/database
 
-# Vider et optimiser les caches de Laravel
-RUN php artisan config:cache && php artisan route:cache && php artisan view:cache
+# Forcer le nettoyage de tous les fichiers de cache au démarrage
+RUN php artisan config:clear && php artisan cache:clear && php artisan view:clear
 
 # Configurer Nginx et Supervisor
 COPY .docker/nginx.conf /etc/nginx/nginx.conf
