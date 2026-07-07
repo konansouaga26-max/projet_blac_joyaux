@@ -1,17 +1,22 @@
 FROM php:8.2-fpm-alpine
 
-# Installer les extensions et dépendances requises (y compris SQLite)
+# Installer les dépendances système requises pour les extensions PHP
 RUN apk add --no-cache \
     nginx \
     supervisor \
     curl \
     libpng-dev \
+    libjpeg-turbo-dev \
+    freetype-dev \
     libxml2-dev \
     zip \
     unzip \
-    git
+    git \
+    sqlite-dev
 
-RUN docker-php-ext-install pdo pdo_mysql pdo_sqlite bcmath gd
+# Configurer et installer les extensions PHP
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install pdo pdo_mysql pdo_sqlite bcmath gd
 
 # Installer Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
