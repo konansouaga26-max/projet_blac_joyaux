@@ -36,7 +36,7 @@ class ProduitController extends Controller
             $query->where('categorie_id', $categorieActive->id);
         }
 
-        $produits = $query->orderBy('nom')->get();
+        $produits = $query->orderBy('id')->get();
 
         return view('boutique', compact('produits', 'categories', 'categorieActive'));
     }

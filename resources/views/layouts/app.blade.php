@@ -23,6 +23,8 @@
                         'bj-or':     '#C9A24B',
                         'bj-creme':  '#F7F2EA',
                         'bj-sable':  '#E8DCC8',
+                        'bj-violet': '#7C5CA8',
+                        'bj-violet-fonce': '#5F4482',
                     },
                     fontFamily: {
                         'titre': ['"Playfair Display"', 'serif'],
@@ -35,12 +37,13 @@
     @stack('styles')
 </head>
 
-<body class="font-texte bg-bj-creme text-bj-noir antialiased">
+<body class="font-texte bg-bj-creme text-bj-noir antialiased pb-16 md:pb-0">
     @include('partials.navbar')
     <main class="min-h-screen">
         @yield('content')
     </main>
     @include('partials.footer')
+    @include('partials.bottom-nav')
 
     <div id="modal-histoire" tabindex="-1" aria-hidden="true"
         class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
@@ -67,7 +70,7 @@
                 </div>
                 <div class="p-5 border-t border-bj-sable">
                     <a href="{{ route('boutique') }}"
-                        class="block w-full text-center bg-bj-noir text-bj-creme uppercase tracking-wide text-sm py-3 rounded-sm hover:bg-bj-cuir transition-colors">
+                        class="block w-full text-center bg-bj-violet text-white uppercase tracking-wide text-sm py-3 rounded-full hover:bg-bj-violet-fonce transition-colors">
                         Découvrir la collection
                     </a>
                 </div>
