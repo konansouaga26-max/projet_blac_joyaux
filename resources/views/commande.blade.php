@@ -26,16 +26,16 @@
             <h2 class="uppercase text-xs tracking-widest text-bj-cuir mb-4">Informations</h2>
             <div class="space-y-4">
                 <input type="text" name="nom_destinataire" placeholder="Nom complet" required value="{{ old('nom_destinataire') }}"
-                       class="w-full border border-bj-noir/20 rounded-sm px-4 py-3.5 text-sm bg-white focus:outline-none focus:border-bj-or">
+                       class="w-full border border-bj-noir/20 rounded-sm px-4 py-3.5 text-sm bg-white focus:outline-none focus:border-bj-violet">
                 <div class="flex">
                     <span class="flex items-center px-3 border border-r-0 border-bj-noir/20 rounded-l-sm bg-bj-sable text-sm">+225</span>
                     <input type="tel" name="telephone_livraison" placeholder="Téléphone" required value="{{ old('telephone_livraison') }}"
-                           class="flex-1 border border-bj-noir/20 rounded-r-sm px-4 py-3.5 text-sm bg-white focus:outline-none focus:border-bj-or">
+                           class="flex-1 border border-bj-noir/20 rounded-r-sm px-4 py-3.5 text-sm bg-white focus:outline-none focus:border-bj-violet">
                 </div>
                 <input type="text" name="adresse_livraison" placeholder="Adresse de livraison" required value="{{ old('adresse_livraison') }}"
-                       class="w-full border border-bj-noir/20 rounded-sm px-4 py-3.5 text-sm bg-white focus:outline-none focus:border-bj-or">
+                       class="w-full border border-bj-noir/20 rounded-sm px-4 py-3.5 text-sm bg-white focus:outline-none focus:border-bj-violet">
                 <select name="ville_livraison" required
-                        class="w-full border border-bj-noir/20 rounded-sm px-4 py-3.5 text-sm bg-white focus:outline-none focus:border-bj-or">
+                        class="w-full border border-bj-noir/20 rounded-sm px-4 py-3.5 text-sm bg-white focus:outline-none focus:border-bj-violet">
                     <option value="">Ville</option>
                     <option>Abidjan — Cocody</option>
                     <option>Abidjan — Plateau</option>
@@ -51,9 +51,9 @@
             <h2 class="uppercase text-xs tracking-widest text-bj-cuir mb-4">Mode de paiement</h2>
             <div class="space-y-3">
                 @foreach ([['carte', 'Carte bancaire'], ['mobile_money', 'Mobile Money (Orange, MTN, Wave)'], ['livraison', 'Paiement à la livraison']] as $i => $mode)
-                <label class="flex items-center gap-3 bg-white border border-bj-noir/10 rounded-sm px-4 py-4 cursor-pointer hover:border-bj-or transition-colors">
+               <label class="flex items-center gap-3 bg-white border border-bj-noir/10 rounded-sm px-4 py-4 cursor-pointer hover:border-bj-violet transition-colors">
                     <input type="radio" name="mode_paiement" value="{{ $mode[0] }}" {{ $i === 0 ? 'checked' : '' }}
-                           class="w-4 h-4 text-bj-cuir focus:ring-bj-or">
+                        class="w-4 h-4 text-bj-violet focus:ring-bj-violet">
                     <span class="text-sm">{{ $mode[1] }}</span>
                 </label>
                 @endforeach
@@ -81,13 +81,13 @@
             </div>
             <div class="border-t border-bj-sable pt-3 flex justify-between items-center">
                 <span class="font-semibold uppercase tracking-wide">Total</span>
-                <span class="font-titre text-2xl text-bj-cuir">{{ number_format($total, 0, ',', ' ') }} FCFA</span>
+                <span class="font-titre text-2xl text-bj-violet">{{ number_format($total, 0, ',', ' ') }} FCFA</span>
             </div>
             <p class="text-xs text-bj-noir/50">Livraison estimée : 1 à 3 jours ouvrés à Abidjan</p>
         </div>
 
-        <button type="submit"
-                class="w-full bg-bj-noir text-bj-creme uppercase tracking-wide text-sm py-4 rounded-sm hover:bg-bj-cuir transition-colors">
+       <button type="submit"
+                class="w-full bg-bj-violet text-white uppercase tracking-wide text-sm py-4 rounded-full hover:bg-bj-violet-fonce transition-colors">
             Confirmer ma commande
         </button>
     </form>

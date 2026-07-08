@@ -5,9 +5,9 @@
 @section('content')
 
 <section class="max-w-2xl mx-auto px-4 py-10">
-    <div class="text-center mb-6">
+   <div class="text-center mb-6">
         <h1 class="font-titre text-3xl">Essayage Virtuel</h1>
-        <p class="text-sm text-bj-cuir mt-1">Visualisez votre sac dans votre quotidien</p>
+        <p class="text-sm text-bj-violet mt-1">visualisez <span id="nom-style-produit">{{ $styles->first()->produit->nom }}</span> dans votre quotidien</p>
     </div>
 
     @if ($styles->isEmpty())
@@ -15,11 +15,11 @@
     @else
 
     {{-- Filtres de style (dynamiques) --}}
-    <div class="flex gap-2 justify-center mb-6 flex-wrap" id="filtres-style">
+   <div class="flex gap-2 justify-center mb-6 flex-wrap" id="filtres-style">
         @foreach ($styles as $index => $style)
         <button onclick="afficherStyle({{ $index }})" data-index="{{ $index }}"
                 class="btn-style px-4 py-2 rounded-full text-xs uppercase tracking-wide border transition-colors
-                       {{ $index === 0 ? 'bg-bj-cuir text-bj-creme border-bj-cuir' : 'border-bj-noir/20 hover:border-bj-or' }}">
+                    {{ $index === 0 ? 'bg-bj-violet text-white border-bj-violet' : 'border-bj-noir/20 text-bj-noir/70 hover:border-bj-violet hover:text-bj-violet' }}">
             {{ $style->nom }}
         </button>
         @endforeach
@@ -47,8 +47,8 @@
                 {{ number_format($styles->first()->produit->prix, 0, ',', ' ') }} FCFA
             </p>
         </div>
-        <a href="{{ route('produit.show', $styles->first()->produit->slug) }}" id="lien-produit"
-           class="bg-bj-noir text-bj-creme text-xs uppercase tracking-wide px-5 py-2.5 rounded-sm hover:bg-bj-cuir transition-colors">
+       <a href="{{ route('produit.show', $styles->first()->produit->slug) }}" id="lien-produit"
+            class="bg-bj-violet text-white text-xs uppercase tracking-wide px-5 py-2.5 rounded-full hover:bg-bj-violet-fonce transition-colors">
             Voir le produit
         </a>
     </div>
@@ -63,12 +63,12 @@
     </div>
 
     {{-- Utiliser ma photo --}}
-    <label class="block w-full text-center bg-bj-cuir text-bj-creme uppercase tracking-wide text-sm py-4 rounded-sm hover:bg-bj-noir transition-colors cursor-pointer">
+    <label class="block w-full text-center bg-bj-violet text-white uppercase tracking-wide text-sm py-4 rounded-full hover:bg-bj-violet-fonce transition-colors cursor-pointer">
         Utiliser ma photo
         <input type="file" accept="image/*" class="hidden" onchange="chargerPhoto(this)">
     </label>
-    <p class="text-xs text-bj-noir/40 text-center mt-3">
-        Votre photo reste sur votre appareil — elle n'est pas envoyée au serveur.
+   <p class="text-xs text-bj-violet/70 text-center mt-3 italic">
+        Essayez, imaginez, adoptez — votre style, votre héritage.
     </p>
 
     @endif
@@ -101,13 +101,15 @@
         ).join('');
 
         // Boutons de filtre
-        document.querySelectorAll('.btn-style').forEach(b => {
+       document.querySelectorAll('.btn-style').forEach(b => {
             const actif = parseInt(b.dataset.index) === styleActuel;
-            b.classList.toggle('bg-bj-cuir', actif);
-            b.classList.toggle('text-bj-creme', actif);
-            b.classList.toggle('border-bj-cuir', actif);
+            b.classList.toggle('bg-bj-violet', actif);
+            b.classList.toggle('text-white', actif);
+            b.classList.toggle('border-bj-violet', actif);
             b.classList.toggle('border-bj-noir/20', !actif);
         });
+
+        document.getElementById('nom-style-produit').textContent = s.produit;
     }
 
     function styleSuivant(delta) {

@@ -8,8 +8,8 @@
 
     {{-- Profil (utilisateur réellement connecté) --}}
     <div class="text-center mb-10">
-        <div class="w-24 h-24 mx-auto rounded-full bg-bj-sable border-2 border-bj-or flex items-center justify-center mb-3 overflow-hidden">
-            <svg class="w-12 h-12 text-bj-cuir" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+        <div class="w-24 h-24 mx-auto rounded-full bg-bj-sable border-2 border-bj-violet flex items-center justify-center mb-3 overflow-hidden">
+            <svg class="w-12 h-12 text-bj-violet" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.5 20.25a8.25 8.25 0 0115 0"/>
             </svg>
         </div>
@@ -17,7 +17,7 @@
         <p class="text-sm text-bj-noir/50">{{ $user->email }}</p>
         @if ($user->role === 'admin')
         <a href="{{ route('admin.dashboard') }}"
-           class="inline-block mt-2 bg-bj-or/20 text-bj-cuir text-xs uppercase tracking-wide px-3 py-1.5 rounded-full hover:bg-bj-or/40">
+        class="inline-block mt-2 bg-bj-violet/15 text-bj-violet text-xs uppercase tracking-wide px-3 py-1.5 rounded-full hover:bg-bj-violet/25">
             Accéder à l'administration
         </a>
         @endif
@@ -46,7 +46,7 @@
                 <li>{{ $ligne->produit->nom }} × {{ $ligne->quantite }}</li>
                 @endforeach
             </ul>
-            <p class="text-sm font-semibold text-bj-cuir">{{ number_format($commande->total, 0, ',', ' ') }} FCFA</p>
+            <p class="text-sm font-semibold text-bj-violet">{{ number_format($commande->total, 0, ',', ' ') }} FCFA</p>
         </div>
         @empty
         <p class="text-sm text-bj-noir/50 bg-white rounded-sm shadow-sm p-4">Aucune commande pour le moment.</p>
@@ -63,10 +63,18 @@
     </div>
 
     {{-- Paramètres --}}
+    {{-- Paramètres --}}
     <h2 class="uppercase text-xs tracking-widest text-bj-cuir mb-3">Paramètres</h2>
     <div class="space-y-2 mb-10">
+        <a href="{{ route('favoris') }}"
+        class="flex items-center justify-between bg-white rounded-sm shadow-sm px-4 py-4 text-sm hover:shadow-md transition-shadow">
+            Mes favoris
+            <svg class="w-4 h-4 text-bj-noir/40" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+            </svg>
+        </a>
         <a href="https://wa.me/2250000000000" target="_blank" rel="noopener"
-           class="flex items-center justify-between bg-white rounded-sm shadow-sm px-4 py-4 text-sm hover:shadow-md transition-shadow">
+        class="flex items-center justify-between bg-white rounded-sm shadow-sm px-4 py-4 text-sm hover:shadow-md transition-shadow">
             Contacter le support WhatsApp
             <svg class="w-4 h-4 text-bj-noir/40" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
@@ -76,7 +84,7 @@
 
     <form method="POST" action="{{ route('logout') }}">
         @csrf
-        <button type="submit" class="w-full bg-bj-cuir text-bj-creme uppercase tracking-wide text-sm py-3.5 rounded-sm hover:bg-bj-noir transition-colors">
+        <button type="submit" class="w-full bg-bj-violet text-white uppercase tracking-wide text-sm py-3.5 rounded-full hover:bg-bj-violet-fonce transition-colors">
             Se déconnecter
         </button>
     </form>

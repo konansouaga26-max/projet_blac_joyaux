@@ -15,27 +15,27 @@
             <h1 class="font-titre text-3xl">Administration</h1>
             <p class="text-sm text-bj-noir/50">Tableau de bord Blac Joyaux</p>
         </div>
-        <span class="bg-bj-or/20 text-bj-cuir text-xs uppercase tracking-wide px-3 py-1.5 rounded-full">Admin</span>
+        <span class="bg-bj-violet/15 text-bj-violet text-xs uppercase tracking-wide px-3 py-1.5 rounded-full">Admin</span>
     </div>
 
     {{-- Statistiques réelles --}}
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
         <div class="bg-white rounded-sm shadow-sm p-5">
             <p class="text-xs uppercase tracking-widest text-bj-noir/50 mb-1">Commandes</p>
-            <p class="font-titre text-2xl text-bj-cuir">{{ $stats['commandes'] }}</p>
+            <p class="font-titre text-2xl text-bj-violet">{{ $stats['commandes'] }}</p>
         </div>
         <div class="bg-white rounded-sm shadow-sm p-5">
             <p class="text-xs uppercase tracking-widest text-bj-noir/50 mb-1">Chiffre d'affaires</p>
-            <p class="font-titre text-2xl text-bj-cuir">{{ number_format($stats['chiffreAffaires'], 0, ',', ' ') }}</p>
+            <p class="font-titre text-2xl text-bj-violet">{{ number_format($stats['chiffreAffaires'], 0, ',', ' ') }}</p>
             <p class="text-xs text-bj-noir/40">FCFA</p>
         </div>
         <div class="bg-white rounded-sm shadow-sm p-5">
             <p class="text-xs uppercase tracking-widest text-bj-noir/50 mb-1">Produits</p>
-            <p class="font-titre text-2xl text-bj-cuir">{{ $stats['produits'] }}</p>
+            <p class="font-titre text-2xl text-bj-violet">{{ $stats['produits'] }}</p>
         </div>
         <div class="bg-white rounded-sm shadow-sm p-5">
             <p class="text-xs uppercase tracking-widest text-bj-noir/50 mb-1">Clients</p>
-            <p class="font-titre text-2xl text-bj-cuir">{{ $stats['clients'] }}</p>
+            <p class="font-titre text-2xl text-bj-violet">{{ $stats['clients'] }}</p>
         </div>
     </div>
 
@@ -43,7 +43,7 @@
     <div class="flex items-center justify-between mb-4">
         <h2 class="font-titre text-xl">Produits</h2>
         <a href="{{ route('admin.produit.creer') }}"
-            class="bg-bj-noir text-bj-creme text-xs uppercase tracking-wide px-5 py-2.5 rounded-sm hover:bg-bj-cuir transition-colors">
+            class="bg-bj-violet text-white text-xs uppercase tracking-wide px-5 py-2.5 rounded-full hover:bg-bj-violet-fonce transition-colors">
             + Ajouter un produit
         </a>
     </div>
@@ -80,7 +80,7 @@
                     <td class="px-4 py-3">
                         <div class="flex gap-3 items-center">
                             <a href="{{ route('admin.produit.modifier', $produit) }}"
-                                class="text-bj-cuir hover:text-bj-or text-xs uppercase">Modifier</a>
+                                class="text-bj-violet hover:text-bj-violet-fonce text-xs uppercase">Modifier</a>
                             <form method="POST" action="{{ route('admin.produit.supprimer', $produit) }}"
                                 onsubmit="return confirm('Supprimer {{ $produit->nom }} ? Cette action est définitive.');">
                                 @csrf

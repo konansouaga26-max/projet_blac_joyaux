@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [ProduitController::class, 'accueil'])->name('home');
 Route::get('/boutique/{categorieSlug?}', [ProduitController::class, 'boutique'])->name('boutique');
 Route::get('/produit/{slug}', [ProduitController::class, 'show'])->name('produit.show');
+Route::get('/recherche-suggestions', [ProduitController::class, 'rechercheSuggestions'])->name('recherche.suggestions');
 
 // Panier (session)
 Route::get('/panier', [PanierController::class, 'index'])->name('panier');

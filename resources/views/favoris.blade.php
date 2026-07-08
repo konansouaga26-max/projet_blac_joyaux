@@ -9,11 +9,11 @@
     <p class="text-sm text-bj-noir/50 mb-8">3 articles sauvegardés</p>
 
     <div class="space-y-4">
-        @php
+       @php
             $favoris = [
-                ['nom' => "L'Élan",      'desc' => 'Élégance adaptable',     'prix' => 75000, 'image' => 'sac-elan.jpeg'],
-                ['nom' => "L'Héritière", 'desc' => 'Le sac de la lady boss', 'prix' => 95000, 'image' => 'sac-heritiere.jpeg'],
-                ['nom' => "La Promesse", 'desc' => 'Intemporelle chic',      'prix' => 55000, 'image' => 'sac-promesse.jpeg'],
+                ['nom' => 'Boïba',        'desc' => 'Élégance confortable',   'prix' => 56000, 'image' => 'sac-boiba.jpeg'],
+                ['nom' => 'Métamorphose', 'desc' => 'Intemporelle chic',      'prix' => 35000, 'image' => 'sac-metamorphose.jpeg'],
+                ['nom' => 'Kôrô',         'desc' => 'Élégance adaptable',     'prix' => 65000, 'image' => 'sac-koro.jpeg'],
             ];
         @endphp
 
@@ -24,14 +24,14 @@
             <div class="flex-1">
                 <h3 class="font-titre text-lg leading-tight">{{ $fav['nom'] }}</h3>
                 <p class="text-xs text-bj-noir/50">{{ $fav['desc'] }}</p>
-                <p class="text-bj-cuir font-semibold text-sm mt-1">{{ number_format($fav['prix'], 0, ',', ' ') }} FCFA</p>
+                <p class="text-bj-violet font-semibold text-sm mt-1">{{ number_format($fav['prix'], 0, ',', ' ') }} FCFA</p>
             </div>
-            <div class="flex flex-col gap-2">
+           <div class="flex flex-col gap-2">
                 <button class="text-xs text-bj-noir/50 hover:text-red-500 flex items-center gap-1">
                     <svg class="w-3.5 h-3.5 text-red-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
                     Retirer
                 </button>
-                <button class="bg-bj-noir text-bj-creme text-[11px] uppercase tracking-wide px-4 py-2.5 rounded-sm hover:bg-bj-cuir transition-colors">
+                <button class="bg-bj-violet text-white text-[11px] uppercase tracking-wide px-4 py-2.5 rounded-full hover:bg-bj-violet-fonce transition-colors">
                     Ajouter au panier
                 </button>
             </div>

@@ -18,7 +18,7 @@
         <div class="text-center py-16">
             <p class="text-bj-noir/50 mb-6">Votre panier est vide.</p>
             <a href="{{ route('boutique') }}"
-               class="inline-block bg-bj-noir text-bj-creme uppercase tracking-wide text-sm px-8 py-3.5 rounded-sm hover:bg-bj-cuir transition-colors">
+                class="inline-block bg-bj-violet text-white uppercase tracking-wide text-sm px-8 py-3.5 rounded-full hover:bg-bj-violet-fonce transition-colors">
                 Découvrir la boutique
             </a>
         </div>
@@ -47,7 +47,7 @@
                     </form>
                 </div>
                 <div class="flex justify-between items-end mt-2">
-                    <p class="text-bj-cuir font-semibold text-sm">{{ number_format($article['prix'], 0, ',', ' ') }} FCFA</p>
+                    <p class="text-bj-violet font-semibold text-sm">{{ number_format($article['prix'], 0, ',', ' ') }} FCFA</p>
                     <div class="flex items-center border border-bj-noir/20 rounded-sm">
                         <form method="POST" action="{{ route('panier.quantite', $cle) }}">
                             @csrf
@@ -71,7 +71,7 @@
         @csrf
         <input type="text" name="code" placeholder="Code promo" value="{{ session('code_promo') }}"
                class="flex-1 border border-bj-noir/20 rounded-sm px-4 py-3 text-sm bg-white focus:outline-none focus:border-bj-or">
-        <button type="submit" class="bg-bj-sable text-bj-noir uppercase text-xs tracking-wide px-6 rounded-sm hover:bg-bj-or transition-colors">
+        <button type="submit" class="bg-bj-violet text-white uppercase text-xs tracking-wide px-6 rounded-full hover:bg-bj-violet-fonce transition-colors">
             Appliquer
         </button>
     </form>
@@ -93,14 +93,14 @@
         </div>
         <div class="border-t border-bj-sable pt-3 flex justify-between text-base">
             <span class="font-semibold uppercase tracking-wide">Total</span>
-            <span class="font-titre text-xl text-bj-cuir">{{ number_format($total, 0, ',', ' ') }} FCFA</span>
+            <span class="font-titre text-xl text-bj-violet">{{ number_format($total, 0, ',', ' ') }} FCFA</span>
         </div>
     </div>
 
-    <a href="{{ route('commande') }}"
-       class="block w-full text-center bg-bj-noir text-bj-creme uppercase tracking-wide text-sm py-4 rounded-sm hover:bg-bj-cuir transition-colors">
-        Valider ma commande
-    </a>
+        <a href="{{ route('commande') }}"
+            class="block w-full text-center bg-bj-violet text-white uppercase tracking-wide text-sm py-4 rounded-full hover:bg-bj-violet-fonce transition-colors">
+            Valider ma commande
+        </a>
     <a href="{{ route('boutique') }}" class="block text-center mt-4 text-sm text-bj-noir/60 hover:text-bj-cuir">
         ← Continuer mes achats
     </a>

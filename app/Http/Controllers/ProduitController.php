@@ -36,6 +36,10 @@ class ProduitController extends Controller
             $query->where('categorie_id', $categorieActive->id);
         }
 
+        if ($recherche = request('q')) {
+            $query->where('nom', 'like', '%' . $recherche . '%');
+        }
+
         $produits = $query->orderBy('id')->get();
 
         return view('boutique', compact('produits', 'categories', 'categorieActive'));
@@ -51,5 +55,31 @@ class ProduitController extends Controller
             ->firstOrFail();
 
         return view('produit', compact('produit'));
+    }
+
+    /**
+     * Suggestions de recherche en direct (JSON), avec image et prix.
+     */
+    public function rechercheSuggestions()
+    {
+        $terme = trim((string) request('q'));
+
+        if ($terme === '') {
+            return response()->json([]);
+        }
+
+        $produits = Produit::with('imagePrincipale', 'categorie')
+            ->where('nom', 'like', '%' . $terme . '%')
+            ->take(5)
+            ->get()
+            ->map(fn ($p) => [
+                'nom'        => $p->nom,
+                'prix'       => number_format($p->prix, 0, ',', ' ') . ' FCFA',
+                'image'      => asset($p->imagePrincipale?->url ?? 'images/sac-hero.jpeg'),
+                'lien'       => route('produit.show', $p->slug),
+                'categorie'  => $p->categorie?->slug,
+            ]);
+
+        return response()->json($produits);
     }
 }

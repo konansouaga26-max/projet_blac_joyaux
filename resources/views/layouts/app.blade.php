@@ -48,11 +48,11 @@
     <div id="modal-histoire" tabindex="-1" aria-hidden="true"
         class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
         <div class="relative p-4 w-full max-w-lg max-h-full">
-            <div class="relative bg-bj-creme rounded-sm shadow-xl">
-                <div class="flex items-center justify-between p-5 border-b border-bj-sable">
-                    <h3 class="font-titre text-2xl">Notre Histoire</h3>
+            <div class="relative bg-bj-creme rounded-sm shadow-xl overflow-hidden">
+                <div class="relative aspect-video">
+                    <img src="{{ asset('images/notre-histoire.jpeg') }}" alt="Notre histoire — Blac Joyaux">
                     <button type="button" data-modal-hide="modal-histoire"
-                        class="text-bj-noir/60 hover:text-bj-noir rounded-lg w-8 h-8 inline-flex justify-center items-center">
+                        class="absolute top-3 right-3 text-white bg-black/40 hover:bg-black/60 rounded-full w-8 h-8 inline-flex justify-center items-center transition-colors">
                         <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 14 14">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="m1 1 12 12M13 1 1 13" />
@@ -60,15 +60,18 @@
                         <span class="sr-only">Fermer</span>
                     </button>
                 </div>
-                <div class="p-5 space-y-4 text-sm leading-relaxed">
-                    <p>Fondée en 2024 par <strong>Manuela Kouadio</strong>, diplômée en Communication et graphisme, Blac
-                        Joyaux est une marque de maroquinerie ivoirienne.</p>
-                    <p>Inspirée par la <strong>poupée Joyaux de Bla</strong> — symbole de fécondité ashanti — chaque sac
-                        célèbre l'héritage africain avec élégance et modernité.</p>
-                    <p>Fabriqués artisanalement à Abidjan, nos sacs sont pensés pour la femme africaine d'aujourd'hui.
-                    </p>
+                <div class="p-5">
+                    <p class="uppercase tracking-[0.25em] text-bj-cuir text-xs mb-3">Notre histoire</p>
+                    <div class="space-y-4 text-sm leading-relaxed">
+                        <p>Fondée en 2024 par <strong>Manuela Kouadio</strong>, diplômée en Communication et graphisme, Blac
+                            Joyaux est une marque de maroquinerie ivoirienne.</p>
+                        <p>Inspirée par la <strong>poupée Joyaux de Bla</strong> — symbole de fécondité ashanti — chaque sac
+                            célèbre l'héritage africain avec élégance et modernité.</p>
+                        <p>Fabriqués artisanalement à Abidjan, nos sacs sont pensés pour la femme africaine d'aujourd'hui.
+                        </p>
+                    </div>
                 </div>
-                <div class="p-5 border-t border-bj-sable">
+                <div class="p-5 pt-0">
                     <a href="{{ route('boutique') }}"
                         class="block w-full text-center bg-bj-violet text-white uppercase tracking-wide text-sm py-3 rounded-full hover:bg-bj-violet-fonce transition-colors">
                         Découvrir la collection
