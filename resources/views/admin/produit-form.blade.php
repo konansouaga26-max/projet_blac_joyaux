@@ -6,7 +6,7 @@
 
 <section class="max-w-2xl mx-auto px-4 py-10">
     <div class="mb-8">
-        <a href="{{ route('admin.dashboard') }}" class="text-sm text-bj-noir/60 hover:text-bj-cuir">← Retour au tableau de bord</a>
+        <a href="{{ route('admin.dashboard') }}" class="hover:text-bj-violet">← Retour au tableau de bord</a>
         <h1 class="font-titre text-3xl mt-2">{{ $produit ? 'Modifier : ' . $produit->nom : 'Ajouter un produit' }}</h1>
     </div>
 
@@ -49,50 +49,50 @@
             <div>
                 <label class="block text-xs uppercase tracking-widest text-bj-cuir mb-1.5">Prix (FCFA) *</label>
                 <input type="number" name="prix" required min="0" step="500" value="{{ old('prix', $produit?->prix ? (int) $produit->prix : '') }}"
-                       class="w-full border border-bj-noir/20 rounded-sm px-4 py-3 text-sm focus:outline-none focus:border-bj-or">
+                       class="focus:border-bj-violet">
             </div>
             <div>
                 <label class="block text-xs uppercase tracking-widest text-bj-cuir mb-1.5">Stock *</label>
                 <input type="number" name="stock" required min="0" value="{{ old('stock', $produit?->stock ?? 0) }}"
-                       class="w-full border border-bj-noir/20 rounded-sm px-4 py-3 text-sm focus:outline-none focus:border-bj-or">
+                       class="w-full border border-bj-noir/20 rounded-sm px-4 py-3 text-sm focus:outline-none focus:border-bj-violet">
             </div>
         </div>
 
         <div>
             <label class="block text-xs uppercase tracking-widest text-bj-cuir mb-1.5">Description</label>
             <textarea name="description" rows="3"
-                      class="w-full border border-bj-noir/20 rounded-sm px-4 py-3 text-sm focus:outline-none focus:border-bj-or">{{ old('description', $produit?->description) }}</textarea>
+                      class="w-full border border-bj-noir/20 rounded-sm px-4 py-3 text-sm focus:outline-none focus:border-bj-violet">{{ old('description', $produit?->description) }}</textarea>
         </div>
 
         <div>
             <label class="block text-xs uppercase tracking-widest text-bj-cuir mb-1.5">Histoire / accroche</label>
             <input type="text" name="histoire" value="{{ old('histoire', $produit?->histoire) }}"
-                   class="w-full border border-bj-noir/20 rounded-sm px-4 py-3 text-sm focus:outline-none focus:border-bj-or">
+                   class="w-full border border-bj-noir/20 rounded-sm px-4 py-3 text-sm focus:outline-none focus:border-bj-violet">
         </div>
 
         <div class="grid grid-cols-2 gap-4">
             <div>
                 <label class="block text-xs uppercase tracking-widest text-bj-cuir mb-1.5">Matière</label>
                 <input type="text" name="matiere" value="{{ old('matiere', $produit?->matiere) }}"
-                       class="w-full border border-bj-noir/20 rounded-sm px-4 py-3 text-sm focus:outline-none focus:border-bj-or">
+                       class="w-full border border-bj-noir/20 rounded-sm px-4 py-3 text-sm focus:outline-none focus:border-bj-violet">
             </div>
             <div>
                 <label class="block text-xs uppercase tracking-widest text-bj-cuir mb-1.5">Dimensions</label>
                 <input type="text" name="dimensions" placeholder="ex : 32 x 24 x 10 cm" value="{{ old('dimensions', $produit?->dimensions) }}"
-                       class="w-full border border-bj-noir/20 rounded-sm px-4 py-3 text-sm focus:outline-none focus:border-bj-or">
+                       class="w-full border border-bj-noir/20 rounded-sm px-4 py-3 text-sm focus:outline-none focus:border-bj-violet">
             </div>
         </div>
 
         @if ($produit)
         <label class="flex items-center gap-2 text-sm">
             <input type="checkbox" name="disponible" value="1" {{ old('disponible', $produit->disponible) ? 'checked' : '' }}
-                   class="w-4 h-4 text-bj-cuir focus:ring-bj-or rounded-sm">
+                   class="w-4 h-4 text-bj-violet focus:ring-bj-violet rounded-sm">
             Produit disponible à la vente
         </label>
         @endif
 
         <button type="submit"
-                class="w-full bg-bj-noir text-bj-creme uppercase tracking-wide text-sm py-3.5 rounded-sm hover:bg-bj-cuir transition-colors">
+                class="w-full bg-bj-violet text-white uppercase tracking-wide text-sm py-3.5 rounded-full hover:bg-bj-violet-fonce transition-colors">
             {{ $produit ? 'Enregistrer les modifications' : 'Ajouter le produit' }}
         </button>
     </form>

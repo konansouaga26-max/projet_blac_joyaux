@@ -38,7 +38,7 @@
     <div>
         <h1 class="font-titre text-3xl md:text-4xl mb-1">{{ $produit->nom }}</h1>
         <p class="text-bj-noir/60 mb-3">{{ $produit->histoire }}</p>
-        <p class="text-2xl font-semibold text-bj-cuir mb-2">{{ number_format($produit->prix, 0, ',', ' ') }} FCFA</p>
+        <p class="text-2xl font-semibold text-bj-violet mb-2">{{ number_format($produit->prix, 0, ',', ' ') }} FCFA</p>
 
         @php $note = $produit->noteMoyenne(); @endphp
         <div class="flex items-center gap-1 mb-6">
@@ -47,9 +47,9 @@
                 <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
             </svg>
             @endfor
-            <span class="text-sm text-bj-noir/50 ml-2">({{ $produit->avis->count() }} avis)</span>
+            <span class="text-sm font-medium text-bj-noir/70 ml-1">{{ number_format($note, 1) }}</span>
+            <span class="text-sm text-bj-noir/50 ml-1">({{ $produit->avis->count() }} avis)</span>
         </div>
-
         @if ($produit->couleurs->isNotEmpty())
         <p class="uppercase text-xs tracking-widest mb-2">Couleur</p>
         <div class="flex gap-3 mb-6" id="choix-couleur">
@@ -69,22 +69,22 @@
             @if ($produit->dimensions)<p><span class="uppercase tracking-wide">Dimensions :</span> {{ $produit->dimensions }}</p>@endif
         </div>
 
-        <div class="flex flex-col gap-3">
+       <div class="flex flex-col gap-3">
             <form method="POST" action="{{ route('panier.ajouter', $produit->slug) }}">
                 @csrf
                 <input type="hidden" name="couleur" id="input-couleur" value="{{ $produit->couleurs->first()?->nom ?? '' }}">
                 <button type="submit" {{ $produit->disponible ? '' : 'disabled' }}
-                        class="w-full bg-bj-noir text-bj-creme uppercase tracking-wide text-sm py-4 rounded-sm hover:bg-bj-cuir transition-colors disabled:opacity-40 disabled:cursor-not-allowed">
+                        class="w-full bg-bj-violet text-white uppercase tracking-wide text-sm py-4 rounded-full hover:bg-bj-violet-fonce transition-colors disabled:opacity-40 disabled:cursor-not-allowed">
                     {{ $produit->disponible ? 'Ajouter au panier' : 'Indisponible' }}
                 </button>
             </form>
             <a href="https://wa.me/2250000000000?text={{ urlencode('Bonjour, je souhaite commander le sac ' . $produit->nom) }}"
-               target="_blank" rel="noopener"
-               class="w-full text-center border-2 border-green-500 text-green-600 uppercase tracking-wide text-sm py-3.5 rounded-sm hover:bg-green-500 hover:text-white transition-colors">
+            target="_blank" rel="noopener"
+            class="w-full text-center border-2 border-green-500 text-green-600 uppercase tracking-wide text-sm py-3.5 rounded-full hover:bg-green-500 hover:text-white transition-colors">
                 Commander via WhatsApp
             </a>
             <a href="{{ route('essayage') }}"
-               class="w-full text-center border border-bj-noir/30 uppercase tracking-wide text-sm py-3.5 rounded-sm hover:border-bj-or hover:text-bj-cuir transition-colors">
+            class="w-full text-center border border-bj-violet/40 text-bj-violet uppercase tracking-wide text-sm py-3.5 rounded-full hover:bg-bj-violet hover:text-white hover:border-bj-violet transition-colors">
                 Essayage virtuel
             </a>
         </div>
