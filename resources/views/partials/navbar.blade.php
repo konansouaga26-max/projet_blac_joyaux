@@ -11,8 +11,8 @@
         </button>
 
         <a href="{{ url('/') }}" class="flex items-center gap-2 md:mr-auto">
-            <img src="{{ asset('images/logo-blac-joyaux.jpeg') }}" alt="Logo Blac Joyaux"
-                class="w-9 h-9 rounded-full object-cover border border-bj-violet hidden md:block">
+          <img src="{{ asset('images/logo-violet-transparent.png') }}" alt="Logo Blac Joyaux"
+                class="w-12 h-12 object-contain">
             <span class="font-titre text-xl md:text-2xl tracking-widest uppercase text-bj-violet">Blac Joyaux</span>
         </a>
 

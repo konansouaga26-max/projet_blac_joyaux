@@ -6,8 +6,8 @@
 
 <section class="max-w-md mx-auto px-4 py-14">
     <div class="text-center mb-8">
-        <img src="{{ asset('images/logo-blac-joyaux.jpeg') }}" alt="Blac Joyaux"
-            class="w-16 h-16 rounded-full object-cover mx-auto mb-4 border-2 border-bj-or">
+       <img src="{{ asset('images/logo-violet-transparent.png') }}" alt="Blac Joyaux"
+            class="w-24 h-24 object-contain mx-auto mb-4">
         <h1 class="font-titre text-3xl">Connexion</h1>
         <p class="text-sm text-bj-noir/60 mt-1">Ravie de vous revoir</p>
     </div>

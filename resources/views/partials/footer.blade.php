@@ -1,7 +1,8 @@
 <footer class="bg-bj-noir text-bj-creme mt-16">
     <div class="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-3 gap-8">
         <div>
-            <h3 class="font-titre text-2xl mb-3">Blac <span class="text-bj-or">Joyaux</span></h3>
+            <img src="{{ asset('images/logo-footer-or-uni.png') }}" alt="Blac Joyaux"
+                class="h-16 w-auto mb-4 object-contain">
             <p class="text-sm text-bj-creme/70 leading-relaxed">
                 Maroquinerie artisanale ivoirienne inspirée de la poupée Joyaux de Bla,
                 symbole de féminité et d'héritage. Chaque sac raconte une histoire.
