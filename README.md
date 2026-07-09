@@ -1,59 +1,117 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+Blac Joyaux — Site e-commerce
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Projet Mode Agence — IFRAN, Communication digitale / Création digitale / Développement web
 
-## About Laravel
+Présentation
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Blac Joyaux est une marque ivoirienne de maroquinerie fondée par Manuela Kouadio, célébrant
+l'héritage culturel africain à travers la poupée Joyaux de Bla. Ce dépôt contient le site
+e-commerce développé pour renforcer l'offre produit et le dispositif de vente en ligne de la marque.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Site en ligne : https://projet-blac-joyaux.onrender.com
+Stack : Laravel · Blade · Tailwind CSS · SQLite · Docker
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+Prérequis
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
+PHP 8.2+
+Composer
+Node.js (pour Tailwind CSS)
+Git
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
 
-### Premium Partners
+Installation en local
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
 
-## Contributing
+Cloner le dépôt :
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## Code of Conduct
+   git clone https://github.com/konansouaga26-max/projet_blac_joyaux.git
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-## Security Vulnerabilities
+Installer les dépendances PHP :
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-## License
+   composer install
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+Installer les dépendances front :
+
+
+   npm install && npm run build
+
+
+Copier le fichier d'environnement :
+
+
+   cp .env.example .env
+
+
+Générer la clé d'application :
+
+
+   php artisan key:generate
+
+
+Lancer les migrations et le seed :
+
+
+   php artisan migrate:fresh --seed
+
+
+Démarrer le serveur local :
+
+
+   php artisan serve
+
+Déploiement en production (Render)
+
+Le projet est conteneurisé via Docker (voir dockerfile à la racine).
+
+
+Créer un nouveau "Web Service" sur Render, connecté au dépôt GitHub, branche main.
+Render détecte automatiquement le dockerfile et construit l'image.
+Configurer les variables d'environnement dans Render (Settings → Environment) :
+
+APP_ENV=production
+APP_URL=https://votre-domaine.onrender.com (obligatoirement en https)
+APP_KEY= (générée en local avec php artisan key:generate --show)
+SESSION_DRIVER=cookie
+
+
+
+Le conteneur exécute automatiquement au démarrage php artisan migrate:fresh --seed,
+puis lance Nginx + PHP-FPM via Supervisor.
+Déploiement automatique à chaque push sur main, ou manuel via "Manual Deploy → Deploy latest commit".
+
+
+⚠️ Point d'attention : migrate:fresh réinitialise la base à chaque redémarrage du service
+(comportement volontaire, la base SQLite n'étant pas persistante sur le plan gratuit Render).
+Pour une mise en production réelle, il faudrait remplacer par migrate --force et connecter
+une base de données externe persistante (PostgreSQL par exemple).
+
+Notes de fonctionnement
+
+
+Le plan gratuit Render met le service en veille après inactivité ; la première requête
+après une période creuse peut prendre 15 à 50 secondes.
+
+
+Organisation Git
+
+
+main — branche de production, déployée automatiquement sur Render
+back-end — développement back-end
+front-end — développement front-end
+
+
+Convention de commit : feat: (nouvelle fonctionnalité), fix: (correction de bug),
+chore: (tâche technique sans impact fonctionnel).
+
+Équipe
+
+
+Back-end : Souaga Marc-Aurel
+Front-end : Kouakou Yao Nehemie
