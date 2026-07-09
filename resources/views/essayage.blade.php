@@ -7,7 +7,7 @@
 <section class="max-w-2xl mx-auto px-4 py-10">
    <div class="text-center mb-6">
         <h1 class="font-titre text-3xl">Essayage Virtuel</h1>
-        <p class="text-sm text-bj-violet mt-1">visualisez <span id="nom-style-produit">{{ $styles->first()->produit->nom }}</span> dans votre quotidien</p>
+        <p class="text-sm text-bj-violet mt-1">Découvrez quel sac accompagne votre rythme de vie.</p>
     </div>
 
     @if ($styles->isEmpty())
@@ -108,8 +108,6 @@
             b.classList.toggle('border-bj-violet', actif);
             b.classList.toggle('border-bj-noir/20', !actif);
         });
-
-        document.getElementById('nom-style-produit').textContent = s.produit;
     }
 
     function styleSuivant(delta) {
