@@ -6,8 +6,8 @@
 
 <section class="max-w-7xl mx-auto px-4 py-10">
     <div class="text-center mb-6">
-        <h1 class="font-titre text-3xl md:text-4xl uppercase">Collections</h1>
-        <p class="text-sm text-bj-noir/60 mt-1">nos créations, pensées pour vous</p>
+        <h1 class="font-titre text-3xl md:text-4xl uppercase">Collection Héritage en mouvement</h1>
+        <p class="text-sm text-bj-noir/60 mt-1">Pour chaque rythme de vie, un héritage à porter.</p>
     </div>
 
     {{-- Filtres par catégorie (dynamiques) --}}

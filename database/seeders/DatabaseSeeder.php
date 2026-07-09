@@ -41,9 +41,9 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // ------- Catégories -------
-        $bureau      = Categorie::create(['nom' => 'Bureau',      'slug' => 'bureau']);
-        $accessoires = Categorie::create(['nom' => 'Accessoires', 'slug' => 'accessoires']);
-        $bandouliere = Categorie::create(['nom' => 'Bandoulière', 'slug' => 'bandouliere']);
+        $bureau      = Categorie::create(['nom' => 'Bureau',  'slug' => 'bureau']);
+        $accessoires = Categorie::create(['nom' => 'Soirée',  'slug' => 'soiree']);
+        $bandouliere = Categorie::create(['nom' => 'Voyage',  'slug' => 'voyage']);
 
         // ------- Couleurs -------
         $beige  = Couleur::create(['nom' => 'Beige',  'code_hex' => '#C8A97E']);
@@ -113,8 +113,8 @@ class DatabaseSeeder extends Seeder
         ImageProduit::create(['produit_id' => $koro->id,         'url' => 'images/sac-koro.jpeg',         'principale' => true, 'ordre' => 1]);
 
         // ------- Styles d'essayage -------
-        \App\Models\StyleEssayage::create(['produit_id' => $boiba->id,        'nom' => 'Style chic',         'image_url' => 'images/sac-boiba.jpeg']);
-        \App\Models\StyleEssayage::create(['produit_id' => $metamorphose->id, 'nom' => 'Style minimaliste',  'image_url' => 'images/sac-metamorphose.jpeg']);
+        \App\Models\StyleEssayage::create(['produit_id' => $boiba->id,        'nom' => 'Style minimaliste',  'image_url' => 'images/sac-boiba.jpeg']);
+        \App\Models\StyleEssayage::create(['produit_id' => $metamorphose->id, 'nom' => 'Style chic',         'image_url' => 'images/sac-metamorphose.jpeg']);
         \App\Models\StyleEssayage::create(['produit_id' => $koro->id,         'nom' => 'Style décontracté',  'image_url' => 'images/sac-koro.jpeg']);
 
         // ------- Avis de test -------
