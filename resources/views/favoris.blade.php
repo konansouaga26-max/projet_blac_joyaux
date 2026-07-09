@@ -42,8 +42,6 @@
 
 <section class="bg-bj-cuir text-bj-creme mt-6">
     <div class="max-w-2xl mx-auto px-4 py-12 text-center">
-        <img src="{{ asset('images/logo-blac-joyaux.jpeg') }}" alt="Blac Joyaux"
-             class="w-14 h-14 rounded-full object-cover mx-auto mb-4 border border-bj-or">
         <h2 class="font-titre text-2xl tracking-widest uppercase mb-2">Blac Joyaux</h2>
         <p class="text-sm mb-1">Rejoignez l'univers Blac Joyaux</p>
         <p class="text-bj-or text-sm mb-6">Inscrivez-vous et recevez 10% de réduction sur votre première commande.</p>
